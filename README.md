@@ -1,7 +1,7 @@
 # The-McProject
 University software engineering project
 
-Travel assistant application
+Travel assistant application using node.js
 
 
 Main Functionality
