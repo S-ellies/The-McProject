@@ -1,14 +1,11 @@
 # The-McProject
 University software engineering project
 
-Travel assistant application using node.js and Express
+Social media - Find a band member
 
 
-Main Functionality
-1. Sorting events, popular attractions, etc. by country and region
-2. Create and save a personal travel plan
-
-Extra functionality
-1. Sort recommended events by date
-2. Sort recommended events by interest
-
+TODOs
+User authentication
+Messaging System
+User Search System 
+Front End
