@@ -6,10 +6,10 @@ Social media - Find a band member
 
 TODOs: 
 
-User authentication
+User authentication - user schema, password encryption
 
-Messaging System
+Messaging System - messages schema, rest APIs
 
-User Search System 
+User Search System - rest APIs
 
-Front End
+Front End - UI design, UX design
