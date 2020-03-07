@@ -24,9 +24,20 @@ router.post('/addMessage', function(req, res, next) {
 });
 
 /* GET messages */
-router.get('/getMessages', function(req, res, next)
-{
+router.get('/getMessages', function(req, res, next) {
+
     Message.find({}, function (err, messages) {
+        if (err)
+            res.send(err);
+
+        res.json(messages);
+    });
+});
+
+/*GET conversation between 2 users*/
+router.get('/getConversation', function(req, res, next) {
+
+    Message.find({sender:req.query.sender, recipient:req.query.recipient}, function (err, messages) {
         if (err)
             res.send(err);
 
