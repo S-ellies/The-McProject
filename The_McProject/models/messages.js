@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 require('./utils');
 
-var messageSchema = new Schema({
+const messageSchema = new Schema({
     sender: {type: String},
 	recipient: {type: String},
     message: {type: String},

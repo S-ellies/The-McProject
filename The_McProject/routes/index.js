@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var Message = require('../models/messages');
+const express = require('express');
+const router = express.Router();
+const Message = require('../models/messages');
 
 
 /* GET home page. */
@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
 /* POST message to db */
 router.post('/addMessage', function(req, res, next) {
 	// Extract the request body which contains the messages
-	message = new Message(req.body);
-	message.save(function (err, savedMessage) {
+    const message = new Message(req.body);
+    message.save(function (err, savedMessage) {
 		
 		if (err) 
 			throw err;
@@ -42,18 +42,18 @@ router.get('/getConversation', function(req, res, next) {
             res.send(err);
 
         res.json(messages);
-    });
+    }).sort( { date_created: -1 } );
 });
 
 /* DELETE message */
 router.delete('/removeMessage/:id', function(req, res, next){
 
-    var id = req.params.id;
+    const id = req.params.id;
     Message.deleteOne({_id:id}, function (err) {
         if (err)
             res.send(err);
 
-        res.json({status : "Successfully removed the document"});
+        res.json({status : "Successfully removed the message"});
     });
 });
 
