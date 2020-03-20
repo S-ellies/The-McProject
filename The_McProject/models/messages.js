@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-require('./utils');
+require('./util');
 
 var messageSchema = new Schema({
     sender: {type: String},
