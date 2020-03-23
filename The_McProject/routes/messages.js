@@ -28,10 +28,9 @@ router.get('/getMessages', function(req, res, next) {
     });
 });
 
-/*GET conversation between 2 users*/
-router.get('/getConversation', function(req, res, next) {
-
-    Message.find({sender:req.query.sender, recipient:req.query.recipient}, function (err, messages) {
+/*GET messages for current user -- need to change hardcoded "Morf" to variable with logged in username*/
+router.get('/getUserMessages', function(req, res, next) {
+    Message.find({ $or: [{sender: "Morf"}, {recipient: "Morf"}]}, function (err, messages) {
         if (err)
             res.send(err);
 
