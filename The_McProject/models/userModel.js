@@ -7,7 +7,10 @@ var usersSchema = new Schema({
     user_name: { type: String, require: true },
     instrument: { type: [String], require: true },
     email: { type: String, require: true },
-    location: { type: String },
+    location: { type: String, require: true },
+    dob: { type: date, removeuire: true },
+    image: { type: String },
+    bio: { type: String },
     password: { type: String, require: true },
     access_token: String
 });
