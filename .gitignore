@@ -1,0 +1,4 @@
+# Default ignored files
+/.idea/
+/The-McProject.iml
+/.github/workflows/nodejs.yml
