@@ -8,7 +8,7 @@ var usersSchema = new Schema({
     instrument: { type: [String], require: true },
     email: { type: String, require: true },
     location: { type: String, require: true },
-    dob: { type: date, removeuire: true },
+    dob: { type: String, require: true },
     image: { type: String },
     bio: { type: String },
     password: { type: String, require: true },
