@@ -15,7 +15,7 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function (token) {
-                    $(location).attr('href', '/');
+                    $(location).attr('href', '/profileSetup');
                     // Redirect to a login page
                 },
                 error: function (errMsg) {

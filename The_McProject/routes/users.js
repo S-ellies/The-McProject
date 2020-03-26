@@ -46,6 +46,12 @@ router.get('/register', function(req, res, next) {
   res.render('register');
 });
 /**
+ * Retrieve page to setup profile after registering
+ */
+router.get('/profileSetup', function(req, res, next) {
+  res.render('profileSetup');
+});
+/**
  * Retrieve login page
  */
 router.get('/login', function(req, res, next) {
