@@ -40,6 +40,20 @@ router.post('/register', function (req, res, next) {
   });
 });
 /**
+ * Retrieve register page
+ */
+router.get('/register', function(req, res, next) {
+  res.render('register');
+});
+/**
+ * Retrieve login page
+ */
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
+
+
+/**
  * Updates existing user information
  * !!!!!!!!!!!!!!!UNFINISHED
  */
@@ -125,6 +139,14 @@ function createJwt(profile) {
   return jwt.sign(profile, 'CSIsTheWorst', {
     expiresIn: '10d'
   });
+}
+/**
+ * Verifies JWT
+ */
+function verifyJwt(jwtString) {
+
+  var value = jwt.verify(jwtString, 'CSIsTheWorst');
+  return value;
 }
 
 
