@@ -15,7 +15,7 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function (token) {
-                    $(location).attr('href', '/feed');
+                    $(location).attr('href', '/');
                     // Redirect to a login page
                 },
                 error: function (errMsg) {
@@ -38,7 +38,7 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function (token) {
-                    $(location).attr('href', '/feed');
+                    $(location).attr('href', '/');
                     // Redirect to logged in page
                 },
                 error: function (errMsg) {
