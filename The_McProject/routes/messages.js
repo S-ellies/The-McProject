@@ -27,12 +27,12 @@ router.get('/getUserMessages', function(req, res, next) {
                 res.send(err);
 
             res.json(messages);
-        });
+        }).sort( { date_created: -1 } );
     });
 });
 
 /* DELETE message */
-router.delete('/removeMessage/:id', function(req, res, next){
+router.delete('/removeMessage/:id', function(req, res, next) {
 
     var id = req.params.id;
     Message.deleteOne({_id:id}, function (err) {
