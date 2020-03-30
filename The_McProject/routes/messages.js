@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Message = require('../models/messageModel');
+var User = require('../models/userModel');
 
 /* POST message to db */
 router.post('/addMessage', function(req, res, next) {
@@ -17,24 +18,16 @@ router.post('/addMessage', function(req, res, next) {
     });
 });
 
-/* GET messages */
-router.get('/getMessages', function(req, res, next) {
-
-    Message.find({}, function (err, messages) {
-        if (err)
-            res.send(err);
-
-        res.json(messages);
-    });
-});
-
-/*GET messages for current user -- need to change hardcoded "Morf" to variable with logged in username*/
+/*GET messages for current user */
 router.get('/getUserMessages', function(req, res, next) {
-    Message.find({ $or: [{sender: "Morf"}, {recipient: "Morf"}]}, function (err, messages) {
-        if (err)
-            res.send(err);
+    var jwtString = req.cookies.Authorization.split(" ");
+    User.findOne( {access_token: jwtString}, function (err, user) {
+        Message.find({ $or: [{sender: user.user_name}, {recipient: user.user_name}]}, function (err, messages) {
+            if (err)
+                res.send(err);
 
-        res.json(messages);
+            res.json(messages);
+        });
     });
 });
 

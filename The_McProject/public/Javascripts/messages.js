@@ -1,6 +1,6 @@
 $(document).ready(
     function() {
-        var user = "Morf";
+        var user = $.cookie("Username");
         var friend;
 
         $('#seb').click(function (event) {
@@ -36,12 +36,14 @@ $(document).ready(
             setTimeout(function() { getMessages(); }, 10000);
         }
 
+        //when send button is clicked, send message
         $('#send').click(function (event) {
             $.ajax({
                 url: '/messages/addMessage',
                 type: 'POST',
                 data: {
-                    sender: user, recipient: friend,
+                    sender: user,
+                    recipient: friend,
                     message: $('#messageText').val()
                 },
                 success: function(result) {

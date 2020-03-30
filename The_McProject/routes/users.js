@@ -34,6 +34,7 @@ router.post('/register', function (req, res, next) {
         if (err)
           throw err;
         res.cookie('Authorization', 'Bearer ' + user.access_token);
+        res.cookie('Username', user.user_name);
         res.json({ 'success': 'account created' });
       });
     }
@@ -91,6 +92,7 @@ router.post('/login', function (req, res, next) {
         user.access_token = createJwt({ email: email });
         user.save();
         res.cookie('Authorization', 'Bearer ' + user.access_token);
+        res.cookie('Username', user.user_name);
         res.json({ 'success': 'loggedIn' });
       }
       else {
