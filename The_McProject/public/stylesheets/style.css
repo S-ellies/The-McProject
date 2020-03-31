@@ -1,8 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 a {
   color: rgb(132, 0, 255);
 }
+
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+html,body {
+  height:100vh;!important;
+  min-height:100vh;!important;
+  max-height:100vh;!important;
+}
+

@@ -30,17 +30,26 @@ $(document).ready(
                     }
 
                     //generate current conversation messages html for DOM
-                    for (var i = 0; i < data.length; i++) {
+                    for (var i = data.length-1; i >= 0; i--) {
                         if (data[i].sender == friend || data[i].recipient == friend) {
-                            messages += "<div class='row justify-content-md-center pt-4'><div class='card col-md-6'><div class='row col-md-6'><h6>From: "
-                                + data[i].sender + "</h6> <span style='margin-left:20px'>To:" + data[i].recipient + "</span></div>"+ data[i].message + "</div></div>";
+                            if (data[i].sender == user) {
+                                messages += "<div class='outgoing_msg'> <div class='sent_msg'> <p>"+data[i].message+"</p> " +
+                                    "<span class='time_date'> 11:01 AM    |    Today</span> </div></div>";
+                            }
+                            else {
+                                messages +=
+                                    "<div class='incoming_msg'> <div class='incoming_msg_img'><img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div> " +
+                                    "<div class='received_msg'> <div class='received_withd_msg'> <p>"+data[i].message+"</p> <span class='time_date'> 11:01 AM    |    Today</span></div> </div> </div>";
+                            }
                         }
                     }
 
                     //generate conversations preview html for DOM
                     for (const message of threads) {
-                        conversations += "<div class='row justify-content-md-center pt-4'><div id='"+message.name+"' class='card col-md-6 thread'><div class='row col-md-6'><h6>"
-                            + message.name + "</h6></div>"+ message.message + "</div></div>";
+                        conversations += "<div id='"+message.name+"' class='chat_list thread'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
+                            "</div> <div class='chat_ib'> <h5>"+message.name+"<span class='chat_date'>Dec 25</span></h5> <p>"+message.message+"</p> </div> </div> </div>"
+                        // conversations += "<div class='row justify-content-md-center pt-4'><div id='"+message.name+"' class='card col-md-6 thread'><div class='row col-md-6'><h6>"
+                        //     + message.name + "</h6></div>"+ message.message + "</div></div>";
                     }
 
                     //insert strings as html
@@ -78,7 +87,9 @@ $(document).ready(
 
         //when conversation is clicked on, display that conversation's messages
         $("div").on("click", "div.thread", function(event){
+            console.log("you been clicked");
             friend = $(this).attr("id");
+            console.log(friend);
             getMessages();
         });
     }
