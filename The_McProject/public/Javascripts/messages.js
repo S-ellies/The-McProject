@@ -45,30 +45,31 @@ $(document).ready(
                     }
 
                     //generate conversations preview html for DOM
+                    var active = "";
                     for (const message of threads) {
-                        conversations += "<div id='"+message.name+"' class='chat_list thread'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
+                        if (message.name == friend) active += "active_chat"
+                        else active = "";
+                        conversations += "<div id='"+message.name+"' class='chat_list "+active+"'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
                             "</div> <div class='chat_ib'> <h5>"+message.name+"<span class='chat_date'>Dec 25</span></h5> <p>"+message.message+"</p> </div> </div> </div>"
-                        // conversations += "<div class='row justify-content-md-center pt-4'><div id='"+message.name+"' class='card col-md-6 thread'><div class='row col-md-6'><h6>"
-                        //     + message.name + "</h6></div>"+ message.message + "</div></div>";
                     }
 
                     //insert strings as html
-                    $("#messages").html(messages);
-                    $("#conversations").html(conversations);
+                    $(".msg_history").html(messages);
+                    $(".inbox_chat").html(conversations);
                 }
             })
             setTimeout(getMessages, 10000);
         }
 
         //when send button is clicked, send message
-        $('#send').click(function (event) {
+        $('.msg_send_btn').click(function (event) {
             $.ajax({
                 url: '/messages/addMessage',
                 type: 'POST',
                 data: {
                     sender: user,
                     recipient: friend,
-                    message: $('#messageText').val(),
+                    message: $('.write_msg').val(),
                     date_created: new Date(Date.now())
                 },
                 success: function(result) {
@@ -86,10 +87,9 @@ $(document).ready(
         }
 
         //when conversation is clicked on, display that conversation's messages
-        $("div").on("click", "div.thread", function(event){
-            console.log("you been clicked");
+        $("div").on("click", "div.chat_list", function(event){
             friend = $(this).attr("id");
-            console.log(friend);
+            $('#msg_history').animate({scrollTop: $('#msg_history').scrollHeight},"fast");
             getMessages();
         });
     }
