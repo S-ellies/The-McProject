@@ -38,7 +38,7 @@ $(document).ready(
                             }
                             else {
                                 messages +=
-                                    "<div class='incoming_msg'> <div class='incoming_msg_img'><img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div> " +
+                                    "<div class='incoming_msg'> <div class='incoming_msg_img'><img src='images/ronald_mcdonald.png' alt='sunil'> </div> " +
                                     "<div class='received_msg'> <div class='received_withd_msg'> <p>"+data[i].message+"</p> <span class='time_date'> 11:01 AM    |    Today</span></div> </div> </div>";
                             }
                         }
@@ -47,6 +47,7 @@ $(document).ready(
                     //generate conversations preview html for DOM
                     var active = "";
                     for (const message of threads) {
+                        //insert "active_chat" class if current user's conversation is open
                         if (message.name == friend) active += "active_chat"
                         else active = "";
                         conversations += "<div id='"+message.name+"' class='chat_list "+active+"'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +

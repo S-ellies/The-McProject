@@ -9,7 +9,7 @@ var usersSchema = new Schema({
     email: { type: String, require: true },
     location: { type: String, require: true },
     dob: { type: Date, require: true },
-    image: { type: String },
+    image: { type: String, default:"images/ronald_mcdonald.png"},
     bio: { type: String },
     password: { type: String, require: true },
     access_token: String
