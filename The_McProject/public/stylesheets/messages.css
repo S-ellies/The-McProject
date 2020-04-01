@@ -120,7 +120,7 @@ img{ max-width:100%;}
 
 .type_msg {border-top: 1px solid #c4c4c4;height: 10%; position: sticky; bottom:0;}
 .msg_send_btn {
-    background: #05728f none repeat scroll 0 0;
+    background: #343a40 none repeat scroll 0 0;
     border: medium none;
     border-radius: 50%;
     color: #fff;
@@ -137,4 +137,6 @@ img{ max-width:100%;}
     height: 90%;
     overflow-y: auto;
     vertical-align: bottom;
+    /*display: flex;*/
+    /*flex-direction: column-reverse;*/
 }
