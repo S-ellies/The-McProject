@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Message = require('../models/messageModel');
+var User = require('../models/userModel');
 
 /* POST message to db */
 router.post('/addMessage', function(req, res, next) {
@@ -17,30 +18,21 @@ router.post('/addMessage', function(req, res, next) {
     });
 });
 
-/* GET messages */
-router.get('/getMessages', function(req, res, next) {
+/*GET messages for current user */
+router.get('/getUserMessages', function(req, res, next) {
+    var jwtString = req.cookies.Authorization.split(" ");
+    User.findOne( {access_token: jwtString}, function (err, user) {
+        Message.find({ $or: [{sender: user.user_name}, {recipient: user.user_name}]}, function (err, messages) {
+            if (err)
+                res.send(err);
 
-    Message.find({}, function (err, messages) {
-        if (err)
-            res.send(err);
-
-        res.json(messages);
-    });
-});
-
-/*GET conversation between 2 users*/
-router.get('/getConversation', function(req, res, next) {
-
-    Message.find({sender:req.query.sender, recipient:req.query.recipient}, function (err, messages) {
-        if (err)
-            res.send(err);
-
-        res.json(messages);
+            res.json(messages);
+        }).sort( { date_created: -1 } );
     });
 });
 
 /* DELETE message */
-router.delete('/removeMessage/:id', function(req, res, next){
+router.delete('/removeMessage/:id', function(req, res, next) {
 
     var id = req.params.id;
     Message.deleteOne({_id:id}, function (err) {
