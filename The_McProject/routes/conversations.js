@@ -35,7 +35,7 @@ router.put('/updateConversations', function (req, res, next) {
 /**
  *  send message to existing conversation
  */
-router.put('/sendMessageToConversation', function (req, res, next) {
+router.put('/sendMessage', function (req, res, next) {
     const date = new Date(Date.now());
     const message = {
         "sent_by": req.body.message.sent_by,
@@ -92,18 +92,27 @@ router.get('/getRecentMessages', function (req, res, next) {
     User.findOne({access_token: jwtString}, function (err, user) {
         if (err)
             throw err;
-        Conversation.find({users: user._id}, function (err, conversations) {
+        Conversation.find({users: user._id}).populate({path: 'users', select: 'user_name', model: 'User'}).exec( function (err, conversations) {
             if (err)
                 throw err;
+
+            var friend;
             var messages = [];
-            for (conversation of conversations) {
-                messages.push(conversation.messages[conversation.messages.length-1])
+            for (var i = 0; i < conversations.length; i++) {
+                if (conversations[i].users[0] == user) friend = conversations[i].users[0];
+                else friend = conversations[i].users[1];
+                messages.push({
+                    friend: friend.user_name,
+                    sent_by: conversations[i].messages[conversations[i].messages.length - 1].sent_by,
+                    message: conversations[i].messages[conversations[i].messages.length - 1].message,
+                    date_created: conversations[i].messages[conversations[i].messages.length - 1].date_created
+                });
+
             }
             res.json(messages);
         });
     });
 });
-
 
 
 module.exports = router;
