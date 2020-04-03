@@ -12,6 +12,7 @@ var usersSchema = new Schema({
     image: { type: String, default:"images/ronald_mcdonald.png"},
     bio: { type: String },
     password: { type: String, require: true },
+    conversations: [{ type: Schema.Types.ObjectId, ref: 'Conversation'}],
     access_token: String
 });
 

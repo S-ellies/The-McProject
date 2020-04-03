@@ -13,6 +13,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
       <script src="/javascripts/auth.js"></script>
+      <script src="/javascripts/layout.js"></script>
       <title>{{title}}</title>
   </head>
 
@@ -26,16 +27,21 @@
             <div class="collapse navbar-collapse" id="navbarNav"><!--collapsible navbar links-->
                 <ul class="navbar-nav">
                     <li class="nav-item"><!--link to login-->
-                        <a class="nav-link" href="/users/login">Already a member?</a>
+                        <a class="nav-link" href="/users/login">Login</a>
+                    </li>
+                    <li class="nav-item"><!--link to sign up-->
+                        <a class="nav-link" href="/users/register">Sign up</a>
                     </li>
                     <li class="nav-item"><!--link to messages-->
                         <a class="nav-link" href="/messages">Messages</a>
                     </li>
-                    <li class="nav-item"><!--link to sign up-->
-                        <a class="nav-link" href="/users/register">Sign up?</a>
-                    </li>
                 </ul>
             </div>
+
+            <a class="navbar-brand" href="/"><!--profile picture-->
+                <img src="/images/The McLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <span id="navbar_username"></span>
+            </a>
         </nav>
 
     {{{body}}}

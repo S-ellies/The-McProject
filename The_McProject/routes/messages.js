@@ -2,12 +2,19 @@ var express = require('express');
 var router = express.Router();
 var Message = require('../models/messageModel');
 var User = require('../models/userModel');
+const { check, validationResult } = require('express-validator');
 
 /* POST message to db */
-router.post('/addMessage', function(req, res, next) {
+router.post('/addMessage', [check("message").notEmpty(), check("message").escape()], function(req, res, next) {
     // Extract the request body which contains the messages
-    message = new Message(req.body);
+    const message = new Message(req.body);
     message.save(function (err, savedMessage) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log(errors.mapped());
+            console.log("errors");
+            return res.status(422).json({ errors: errors.array() });
+        }
 
         if (err)
             throw err;
@@ -18,7 +25,14 @@ router.post('/addMessage', function(req, res, next) {
     });
 });
 
-/*GET messages for current user */
+/* POST conversation when user starts new conversation */
+// router.put('/newConversation', function (req, res, next) {
+//     Conversations.updateOne({user: req.user}, $push {req.newUser}, function(err, conversation) {
+//
+//     })
+// })
+
+/* GET messages for current user */
 router.get('/getUserMessages', function(req, res, next) {
     var jwtString = req.cookies.Authorization.split(" ");
     User.findOne( {access_token: jwtString}, function (err, user) {

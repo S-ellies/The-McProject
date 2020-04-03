@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/userModel')
+var User = require('../models/userModel');
 var jwt = require('jsonwebtoken');
 
 /**
@@ -156,6 +156,7 @@ function verifyJwt(jwtString) {
   var value = jwt.verify(jwtString, 'CSIsTheWorst');
   return value;
 }
+
 
 
 module.exports = router;
