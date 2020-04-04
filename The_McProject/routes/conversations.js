@@ -36,13 +36,12 @@ router.put('/updateConversations', function (req, res, next) {
  *  send message to existing conversation
  */
 router.put('/sendMessage', function (req, res, next) {
-    const date = new Date(Date.now());
     const message = {
-        "sent_by": req.body.message.sent_by,
-        "message": req.body.message.message,
-        "date_created": date
+        "sent_by": req.body.sent_by,
+        "message": req.body.message,
+        "date_created": new Date(Date.now())
     }
-    Conversation.findOneAndUpdate({users: req.body.users}, {$push: {messages: message }}, function (err, conversation) {
+    Conversation.findOneAndUpdate({_id: req.body.conversation_id}, {$push: {messages: message }}, function (err, conversation) {
         if (err)
             throw err;
         res.json("success");
@@ -50,10 +49,10 @@ router.put('/sendMessage', function (req, res, next) {
 });
 
 /**
- *  GET conversation by user _id and populate user objects
+ *  GET conversation by id and populate user objects
  */
-router.get('/getConversation', function (req, res, next) {
-    Conversation.findOne({users:{ "$in" : ["5e874a2e0f620433ecedff5c"]} }).populate('users').exec( function (err, conversation) {
+router.get('/getConversation/:id', function (req, res, next) {
+    Conversation.findOne({_id: req.params.id}).populate('users').exec( function (err, conversation) {
         if (err)
             throw err;
 
@@ -99,13 +98,14 @@ router.get('/getRecentMessages', function (req, res, next) {
             var friend;
             var messages = [];
             for (var i = 0; i < conversations.length; i++) {
-                if (conversations[i].users[0] == user) friend = conversations[i].users[0];
-                else friend = conversations[i].users[1];
+                if (conversations[i].users[0]._id.equals(user._id)) friend = conversations[i].users[1];
+                else friend = conversations[i].users[0];
                 messages.push({
                     friend: friend.user_name,
                     sent_by: conversations[i].messages[conversations[i].messages.length - 1].sent_by,
                     message: conversations[i].messages[conversations[i].messages.length - 1].message,
-                    date_created: conversations[i].messages[conversations[i].messages.length - 1].date_created
+                    date_created: conversations[i].messages[conversations[i].messages.length - 1].date_created,
+                    conversation_id: conversations[i]._id
                 });
 
             }

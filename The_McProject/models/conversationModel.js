@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 require('./util');
 
 const conversationSchema = new Schema({
-    users : [{type: Schema.Types.ObjectId, ref : 'User._id'}],
+    users : [{type: Schema.Types.ObjectId, ref : 'User'}],
     messages: [{
             sent_by: {type: String},
             message: {type: String},
