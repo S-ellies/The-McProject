@@ -11,5 +11,10 @@ router.get('/messages', function(req, res, next) {
     res.render('messages', {title: 'Messages'});
 });
 
+/*GET profile setup page */
+router.get('/profileSetup',function(req,res,next) {
+  res.render('profileSetup'{title: 'profileSetup'});
+});
+
 module.exports = router;
 
