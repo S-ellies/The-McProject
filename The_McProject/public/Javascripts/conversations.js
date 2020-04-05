@@ -2,7 +2,6 @@ $(document).ready(
     function() {
         //global variables
         const user = $.cookie('Username');
-        console.log(user);
         var currentConversation;
 
         //function calls
@@ -18,7 +17,7 @@ $(document).ready(
                     if (currentConversation == null) currentConversation = data[0].conversation_id;
                     var recentMessages = "";
                     for (var i = 0; i < data.length; i++) {
-                        recentMessages += "<div id='"+data[i].friend+"' class='chat_list'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
+                        recentMessages += "<div id='"+data[i].conversation_id+"' class='chat_list'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
                             "</div> <div class='chat_ib'> <h5>"+data[i].friend+"<span class='chat_date'>Dec 25</span></h5> <p>"+data[i].message+"</p> </div> </div> </div>";
                     }
                     $(".inbox_chat").html(recentMessages);
@@ -67,6 +66,19 @@ $(document).ready(
             })
         }
 
+        function newConversation() {
+            //use js to display html
+
+            $('.msg_send_btn').click()
+            $.ajax({
+                url: 'conversations/newConversation',
+                type: 'POST',
+                data: {
+
+                }
+            })
+        }
+
         function formatDate(otherDate) {
             const date = new Date(otherDate);
             const currentDate = new Date(Date.now());
@@ -90,7 +102,6 @@ $(document).ready(
             const date = new Date(otherDate);
             const currentDate = new Date(Date.now());
             const timeDifference = currentDate.getTime() - date.getTime();
-            console.log(timeDifference);
             var hour;
             if (timeDifference < 10000) return "Just now"
             else if (timeDifference < 60000) return Math.floor(timeDifference/1000)+"s ago";
