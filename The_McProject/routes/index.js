@@ -13,7 +13,7 @@ router.get('/messages', function(req, res, next) {
 
 /*GET profile setup page */
 router.get('/profileSetup',function(req,res,next) {
-  res.render('profileSetup'{title: 'profileSetup'});
+  res.render('profileSetup', {title: 'profileSetup'});
 });
 
 module.exports = router;
