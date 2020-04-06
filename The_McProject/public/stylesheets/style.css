@@ -1,8 +1,32 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ body { 
+    background: url("../images/websitebackground.jpg") no-repeat center center fixed;  
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 a {
-  color: #00B7FF;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+ }
+ 
+
+
+h1{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+	
+}
+
+button{
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+.jumbotron{
+	margin-top: 20px;
+	background: none;
 }
