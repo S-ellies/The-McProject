@@ -40,6 +40,26 @@ router.post('/register', function (req, res, next) {
   });
 });
 /**
+ * Retrieve register page
+ */
+router.get('/register', function(req, res, next) {
+  res.render('register');
+});
+/**
+ * Retrieve page to setup profile after registering
+ */
+router.get('/profileSetup', function(req, res, next) {
+  res.render('profileSetup');
+});
+/**
+ * Retrieve login page
+ */
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
+
+
+/**
  * Updates existing user information
  * !!!!!!!!!!!!!!!UNFINISHED
  */
@@ -57,9 +77,9 @@ router.put('/updateUser', function (req, res, next) {
  * login api
  */
 router.post('/login', function (req, res, next) {
-  var username = req.body.user_name;
+  var email = req.body.email;
   var password = req.body.password;
-  User.findOne({ 'user_name': username }, function (err, user) {
+  User.findOne({ 'email': email }, function (err, user) {
     // if there are any errors, return the error
     if (err)
       res.send(err);
@@ -68,7 +88,7 @@ router.post('/login', function (req, res, next) {
       // Compare passwords
       if (user.validPassword(password)) {
         // Success : Assign new access token for the session
-        user.access_token = createJwt({ user_name: username });
+        user.access_token = createJwt({ email: email });
         user.save();
         res.cookie('Authorization', 'Bearer ' + user.access_token);
         res.json({ 'success': 'loggedIn' });
@@ -125,6 +145,14 @@ function createJwt(profile) {
   return jwt.sign(profile, 'CSIsTheWorst', {
     expiresIn: '10d'
   });
+}
+/**
+ * Verifies JWT
+ */
+function verifyJwt(jwtString) {
+
+  var value = jwt.verify(jwtString, 'CSIsTheWorst');
+  return value;
 }
 
 

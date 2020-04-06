@@ -1,25 +1,30 @@
-<div id="login">
-
-  <h1><strong>Honey Files</strong> by Threat Stack, Inc</h1>
-
-  <div class="login-box shadow">
-   <form action="/login" method='post' class='login-form'>
-
-     <i id='username-input-icon' class='icon-user'></i>
-     <input id="username" autocomplete="off" placeholder="Username" class='dark' type="text" name="username">
-
-     <i id='password-input-icon' class='icon-lock'></i>
-     <input id="password" autocomplete="off" placeholder="Password" class='dark' type="password" name="password">
-
-    <input type="submit" class='button large' value="Please, login to continue.">
-   
-   </form>
-
-  </div>
-
-   <div class="login-footer">
-     Honey File is made by Threat Stack, Inc - Free of Charge. Enjoy!<br />
-<a href="https://www.threatstack.com" target="_BLANK">https://www.threatstack.com</a>
-   </div>
-
+<div class="col-md-8 col-md-offset-2">
+    <h2>Login to your Account</h2>
+    <form class="form-horizontal" role="form" id="log-form">
+        <div class="form-group mt">
+            <div class="col-sm-10 col-sm-offset-2">
+            <div class="col-sm-3">
+                <label for="inputEmail" class="control-label">E-Mail</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="email" class="form-control input-lg required" id="inputEmail"
+                       placeholder="someone@address.com">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+            <div class="col-sm-3">
+                <label for="inputPassword" class="control-label">Password</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="password" class="form-control input-lg required" id="inputPassword"
+                       placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row col-sm-offset-2 col-sm-10 mt">
+                <button type="submit" class="btn btn-warning btn-lg">Login</button>
+            </div>
+        </div>
+    </form>
 </div>
