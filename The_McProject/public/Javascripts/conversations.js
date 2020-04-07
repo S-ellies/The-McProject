@@ -13,7 +13,7 @@ $(document).ready(
         $("div").on("click", "div.chat_list", function(event){
             currentConversation = $(this).attr("id");
             $('#msg_history').animate({scrollTop: $('#msg_history').scrollHeight},"fast");
-            getRecentMessages();
+            getConversation(currentConversation);
         });
 
         //function definitions
@@ -82,6 +82,7 @@ $(document).ready(
                             },
                             success: function() {
                                 console.log("success");
+                                getConversation(data.id);
                             }
                         })
                     }
@@ -99,6 +100,7 @@ $(document).ready(
                     success: function () {
                         $('.write_msg').val("");
                         getRecentMessages();
+                        scrollBottom();
                     }
                 })
             }
@@ -148,6 +150,11 @@ $(document).ready(
                 hour = date.getHours() - 12;
                 return hour+":"+date.getMinutes()+" PM";
             }
+        }
+
+        function scrollBottom() {
+            var element = document.getElementById("msg_history");
+            element.scrollTop = element.scrollHeight;
         }
     }
 );
