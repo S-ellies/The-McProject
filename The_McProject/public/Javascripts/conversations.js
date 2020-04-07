@@ -10,6 +10,11 @@ $(document).ready(
         getRecentMessages();
         $('.search-button').click(newConversation);
         $('.msg_send_btn').click(sendMessage);
+        $("div").on("click", "div.chat_list", function(event){
+            currentConversation = $(this).attr("id");
+            $('#msg_history').animate({scrollTop: $('#msg_history').scrollHeight},"fast");
+            getRecentMessages();
+        });
 
         //function definitions
         function getRecentMessages() {
@@ -81,14 +86,6 @@ $(document).ready(
                         })
                     }
                 })
-                // $.ajax({
-                //     url: 'conversations/updateConversations',
-                //     type: 'PUT',
-                //     data: {
-                //         users: [userID, "5e8cfd9f276a4e0d38b71acf"],
-                //         conversation:
-                //     }
-                // }
             }
             else if (!newConvo) {
                 $.ajax({
