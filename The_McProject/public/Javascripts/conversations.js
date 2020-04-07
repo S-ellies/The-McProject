@@ -2,10 +2,13 @@ $(document).ready(
     function() {
         //global variables
         const user = $.cookie('Username');
+        const userID = $.cookie('UserID').split("\"")[1];
         var currentConversation;
+        var newConvo = false;
 
         //function calls
         getRecentMessages();
+        $('.search-button').click(newConversation);
         $('.msg_send_btn').click(sendMessage);
 
         //function definitions
@@ -14,14 +17,14 @@ $(document).ready(
                 url: 'conversations/getRecentMessages',
                 type: 'GET',
                 success: function (data) {
-                    if (currentConversation == null) currentConversation = data[0].conversation_id;
+                    if (currentConversation == null) if (data.length > 0) currentConversation = data[0].conversation_id;
                     var recentMessages = "";
                     for (var i = 0; i < data.length; i++) {
                         recentMessages += "<div id='"+data[i].conversation_id+"' class='chat_list'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
                             "</div> <div class='chat_ib'> <h5>"+data[i].friend+"<span class='chat_date'>Dec 25</span></h5> <p>"+data[i].message+"</p> </div> </div> </div>";
                     }
                     $(".inbox_chat").html(recentMessages);
-                    getConversation(currentConversation);
+                    if (!newConvo) getConversation(currentConversation);
                 }
             })
             setTimeout(getRecentMessages, 10000);
@@ -51,32 +54,64 @@ $(document).ready(
         }
 
         function sendMessage() {
-            $.ajax({
-                url: 'conversations/sendMessage',
-                type: 'PUT',
-                data: {
-                    sent_by: user,
-                    message: $('.write_msg').val(),
-                    conversation_id: currentConversation
-                },
-                success: function () {
-                    $('.write_msg').val("");
-                    getRecentMessages();
-                }
-            })
+            if (newConvo) {
+                var conversationID;
+                $.ajax({
+                    url: 'conversations/newConversation',
+                    type: 'POST',
+                    data: {
+                        users: [userID, "5e8cfd9f276a4e0d38b71acf"],
+                        messages: [{
+                            sent_by: user,
+                            message: $('.write_msg').val()
+                        }]
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        $.ajax({
+                            url: 'conversations/updateConversations',
+                            type: 'PUT',
+                            data: {
+                                users: [userID, "5e8cfd9f276a4e0d38b71acf"],
+                                conversation: data.id
+                            },
+                            success: function() {
+                                console.log("success");
+                            }
+                        })
+                    }
+                })
+                // $.ajax({
+                //     url: 'conversations/updateConversations',
+                //     type: 'PUT',
+                //     data: {
+                //         users: [userID, "5e8cfd9f276a4e0d38b71acf"],
+                //         conversation:
+                //     }
+                // }
+            }
+            else if (!newConvo) {
+                $.ajax({
+                    url: 'conversations/sendMessage',
+                    type: 'PUT',
+                    data: {
+                        sent_by: user,
+                        message: $('.write_msg').val(),
+                        conversation_id: currentConversation
+                    },
+                    success: function () {
+                        $('.write_msg').val("");
+                        getRecentMessages();
+                    }
+                })
+            }
         }
 
         function newConversation() {
             //use js to display html
-
-            $('.msg_send_btn').click()
-            $.ajax({
-                url: 'conversations/newConversation',
-                type: 'POST',
-                data: {
-
-                }
-            })
+            newConvo = true;
+            $('.msg_history').html("<h1>New Conversation</h1>");
+            $('.msg_history').css("flex-direction", "column");
         }
 
         function formatDate(otherDate) {

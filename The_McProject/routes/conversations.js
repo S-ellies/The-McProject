@@ -60,6 +60,15 @@ router.get('/getConversation/:id', function (req, res, next) {
     });
 });
 
+router.get('getConversationID/user&friend', function (req, res, next) {
+    Conversation.findOne({users: {$in: [req.params.user, req.params.friend]}}, function (err, conversation) {
+        if (err)
+            throw err;
+
+        res.json(conversation._id);
+    });
+});
+
 /**
  *  GET all user conversations
  */

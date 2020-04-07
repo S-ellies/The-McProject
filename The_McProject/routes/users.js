@@ -35,6 +35,7 @@ router.post('/register', function (req, res, next) {
           throw err;
         res.cookie('Authorization', 'Bearer ' + user.access_token);
         res.cookie('Username', user.user_name);
+        res.cookie('UserID', user._id);
         res.json({ 'success': 'account created' });
       });
     }
@@ -93,6 +94,7 @@ router.post('/login', function (req, res, next) {
         user.save();
         res.cookie('Authorization', 'Bearer ' + user.access_token);
         res.cookie('Username', user.user_name);
+        res.cookie('UserID', user._id);
         res.json({ 'success': 'loggedIn' });
       }
       else {
