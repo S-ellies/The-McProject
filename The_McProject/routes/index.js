@@ -9,6 +9,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
 
+/*GET profile setup page */
+router.get('/profileSetup',function(req,res,next) {
+  res.render('profileSetup', {title: 'profileSetup'});
+});
+
 /*GET messages page. */
 router.get('/messages', function(req, res, next) {
 
@@ -28,6 +33,9 @@ router.get('/messages', function(req, res, next) {
     }
 });
 
+/**
+ * GET user profile picture
+ */
 router.get('/getUserImage', function (req, res, next) {
     User.findOne({access_token: req.cookies.Authorization.split(" ")[1]}, function (err, user) {
         if (err)
