@@ -19,7 +19,7 @@
   </head>
 
   <body>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark"> <!--navbar-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark"> <!--navbar-->
             <a class="navbar-brand" href="/"><!--Logo and Title-->
                 <img src="/images/The McLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 <span>The McProject</span>
@@ -38,51 +38,23 @@
                     </li>
                 </ul>
             </div>
-            <form class="form-inline my-2 my-lg-1" style="background-color: #333333;">
-                <input class="form-control mr-sm-1" style="background-color: #333333;" type="search" placeholder="Find Friends, Instruments, Etc">
-                <button class="btn btn-outline-success my-2 my-sm-0" style="background-color: #333333;" type="submit">Search</button>
-            </form>
+            <div class="nav-search navbar-collapse collapse">
+                <form class="form-inline ml-auto">
+                    <div class="md-form nav-sbar my-0">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                        <i class="fas fa-search text-white search-btn" aria-hidden="true"></i>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <a class="navbar-brand navbar-user" href="/"><!--profile picture-->
+                    <img src="/images/ronald_mcdonald.png" width="30" height="30" id="profile_picture" class="d-inline-block align-top" alt="">
+                    <span id="navbar_username"></span>
+                </a>
+            </div>
 
-            <a class="navbar-brand" href="/"><!--profile picture-->
-                <img src="/images/ronald_mcdonald.png" width="30" height="30" id="profile_picture" class="d-inline-block align-top" alt="">
-                <span id="navbar_username"></span>
-            </a>
         </nav>
 
     {{{body}}}
-		
-    <footer class="page-footer font-small special-color-dark pt-4">
-					<!-- Footer Elements -->
-					<div class="container">
-							<!-- Social buttons -->
-							<ul class="list-unstyled list-inline text-center">
-									<li class="list-inline-item">
-											<a class="btn-floating btn-fb mx-1">
-											<i class="fab fa-facebook-f"> </i>
-											</a>
-									</li>
-									<li class="list-inline-item">
-											<a class="btn-floating btn-tw mx-1">
-											<i class="fab fa-twitter"> </i>
-											</a>
-									</li>
-									<li class="list-inline-item">
-											<a class="btn-floating btn-gplus mx-1">
-											<i class="fab fa-google-plus-g"> </i>
-											</a>
-									</li>
-									<li class="list-inline-item">
-											<a class="btn-floating btn-li mx-1">
-											<i class="fab fa-linkedin-in"> </i>
-											</a>
-									</li>
-									<li class="list-inline-item">
-											<a class="btn-floating btn-dribbble mx-1">
-											<i class="fab fa-dribbble"> </i>
-											</a>
-									</li>
-							</ul>
-					</div>
-			</footer>
   </body>
 </html>
