@@ -3,6 +3,7 @@ $(document).ready(
         //global variables
         const user = $.cookie('Username');
         const userID = $.cookie('UserID').split("\"")[1];
+        var newConvoUserID;
         var currentConversation;
         var newConvo = false;
 
@@ -32,7 +33,7 @@ $(document).ready(
                         you = "";
                     }
                     $(".inbox_chat").html(recentMessages);
-                    if (!newConvo) getConversation(currentConversation);
+                    if (!newConvo && data.length > 0) getConversation(currentConversation);
                 }
             })
             setTimeout(getRecentMessages, 10000);
@@ -67,7 +68,7 @@ $(document).ready(
                     url: 'conversations/newConversation',
                     type: 'POST',
                     data: {
-                        users: [userID, "5e8cfd9f276a4e0d38b71acf"],
+                        users: [userID, newConvoUserID],
                         messages: [{
                             sent_by: user,
                             message: $('.write_msg').val()
@@ -79,12 +80,14 @@ $(document).ready(
                             url: 'conversations/updateConversations',
                             type: 'PUT',
                             data: {
-                                users: [userID, "5e8cfd9f276a4e0d38b71acf"],
+                                users: [userID, newConvoUserID],
                                 conversation: data.id
                             },
                             success: function() {
                                 console.log("success");
+                                getRecentMessages();
                                 getConversation(data.id);
+                                $('.msg_history').css("flex-direction", "column-reverse");
                             }
                         })
                     }
@@ -110,9 +113,22 @@ $(document).ready(
 
         function newConversation() {
             //use js to display html
-            newConvo = true;
-            $('.msg_history').html("<h1>New Conversation</h1>");
-            $('.msg_history').css("flex-direction", "column");
+            $.ajax({
+                url: '/conversations/getUserID/'+$('.search-bar').val(),
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                    if (data == "No user found") {
+                        alert("No user found")
+                    }
+                    else {
+                        newConvo = true;
+                        $('.msg_history').html("<h1>"+data.user_name+"</h1>");
+                        $('.msg_history').css("flex-direction", "column");
+                        newConvoUserID = data._id;
+                    }
+                }
+            })
         }
 
         function formatDate(otherDate) {

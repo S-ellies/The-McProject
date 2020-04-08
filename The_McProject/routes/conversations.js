@@ -125,6 +125,23 @@ router.get('/getRecentMessages', function (req, res, next) {
     });
 });
 
+/**
+ * GET user id for new conversation
+ */
+router.get('/getUserID/:name', function(req, res, next) {
+    User.findOne({user_name: req.params.name}, function(err, user) {
+        console.log(user);
+        if (err)
+            throw err;
+        if (user == null)
+            res.json("No user found");
+        else res.json({
+            _id: user._id,
+            user_name: user.user_name
+        });
+    })
+})
+
 
 module.exports = router;
 
