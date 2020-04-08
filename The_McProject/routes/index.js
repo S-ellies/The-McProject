@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const User = require('../models/userModel');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 
@@ -26,6 +27,14 @@ router.get('/messages', function(req, res, next) {
         });
     }
 });
+
+router.get('/getUserImage', function (req, res, next) {
+    User.findOne({access_token: req.cookies.Authorization.split(" ")[1]}, function (err, user) {
+        if (err)
+            throw err;
+        res.json(user.image);
+    })
+})
 
 /*
 Verifies a JWT

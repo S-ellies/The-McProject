@@ -57,6 +57,9 @@ router.get('/getConversation/:id', function (req, res, next) {
     Conversation.findOne({_id: req.params.id}).populate('users').exec( function (err, conversation) {
         if (err)
             throw err;
+        // User.findOne({access_token: req.cookie.Authorization.split(" ")[1]}, function(err, user) {
+        //     if (con)
+        // })
 
         res.json(conversation);
     });
@@ -102,21 +105,29 @@ router.get('/getRecentMessages', function (req, res, next) {
     User.findOne({access_token: jwtString}, function (err, user) {
         if (err)
             throw err;
-        Conversation.find({users: user._id}).sort({last_altered: -1}).populate({path: 'users', select: 'user_name', model: 'User'}).exec( function (err, conversations) {
+        Conversation.find({users: user._id}).sort({last_altered: -1}).populate({path: 'users', select: ['user_name','image'], model: 'User'}).exec( function (err, conversations) {
             if (err)
                 throw err;
 
             var friend;
+            var image;
             var messages = [];
             for (var i = 0; i < conversations.length; i++) {
-                if (conversations[i].users[0]._id.equals(user._id)) friend = conversations[i].users[1];
-                else friend = conversations[i].users[0];
+                if (conversations[i].users[0]._id.equals(user._id)) {
+                    friend = conversations[i].users[1];
+                    image = conversations[i].users[1].image;
+                }
+                else {
+                    friend = conversations[i].users[0];
+                    image = conversations[i].users[0].image;
+                }
                 messages.push({
                     friend: friend.user_name,
                     sent_by: conversations[i].messages[conversations[i].messages.length - 1].sent_by,
                     message: conversations[i].messages[conversations[i].messages.length - 1].message,
                     date_created: conversations[i].messages[conversations[i].messages.length - 1].date_created,
-                    conversation_id: conversations[i]._id
+                    conversation_id: conversations[i]._id,
+                    image: image
                 });
 
             }

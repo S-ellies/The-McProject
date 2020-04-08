@@ -3,6 +3,7 @@ $(document).ready(
         //global variables
         const user = $.cookie('Username');
         const userID = $.cookie('UserID').split("\"")[1];
+        var friendPhoto;
         var newConvoUserID;
         var currentConversation;
         var newConvo = false;
@@ -28,7 +29,7 @@ $(document).ready(
                     var you = "";
                     for (var i = 0; i < data.length; i++) {
                         if (data[i].sent_by == user) you += "You: ";
-                        recentMessages += "<div id='"+data[i].conversation_id+"' class='chat_list'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
+                        recentMessages += "<div id='"+data[i].conversation_id+"' class='chat_list'> <div class='chat_people'> <div class='chat_img'> <img src='"+data[i].image+"' alt='sunil'>" +
                             "</div> <div class='chat_ib'> <h5>"+data[i].friend+"<span class='chat_date'>Dec 25</span></h5> <p>"+you+data[i].message+"</p> </div> </div> </div>";
                         you = "";
                     }
@@ -45,6 +46,9 @@ $(document).ready(
                 type: 'GET',
                 success: function (data) {
                     var messages = "";
+                    var img;
+                    if (data.users[0].user_name == user) img = data.users[1].image;
+                    else img = data.users[0].image;
                     for (var i = data.messages.length-1; i >= 0; i--) {
                         formatTime(data.messages[i].date_created);
                         if (data.messages[i].sent_by == user) {
@@ -53,7 +57,7 @@ $(document).ready(
                         }
                         else {
                             messages +=
-                                "<div class='incoming_msg'> <div class='incoming_msg_img'><img src='images/ronald_mcdonald.png' alt='sunil'> </div> " +
+                                "<div class='incoming_msg'> <div class='incoming_msg_img'><img src='"+img+"' alt='sunil'> </div> " +
                                 "<div class='received_msg'> <div class='received_withd_msg'> <p>"+data.messages[i].message+"</p> <span class='time_date'> "+formatTime(data.messages[i].date_created)+"    |    "+formatDate(data.messages[i].date_created)+"</span></div> </div> </div>";
                         }
                     }
