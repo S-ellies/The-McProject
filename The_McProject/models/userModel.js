@@ -8,10 +8,11 @@ var usersSchema = new Schema({
     instrument: { type: [String], require: true },
     email: { type: String, require: true },
     location: { type: String, require: true },
-    dob: { type: String, require: true },
-    image: { type: String },
+    dob: { type: Date, require: true },
+    image: { type: String, default:"/images/ronald_mcdonald.png"},
     bio: { type: String },
     password: { type: String, require: true },
+    conversations: [{ type: Schema.Types.ObjectId, ref: 'Conversation'}],
     access_token: String
 });
 
