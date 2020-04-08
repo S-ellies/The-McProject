@@ -1,8 +1,14 @@
-  body { 
+html,body {
+  height:100vh !important;
+  min-height:100vh !important;
+  max-height:100vh !important;
+}
+ body { 
     background: url("../images/websitebackground.jpg") no-repeat center center fixed;  
     background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  padding: 0px;
 }
 
 a {
@@ -87,4 +93,26 @@ button{
 	color: white;
 	cursor: pointer;
 	opacity: 0.5;
+}
+
+.search-btn {
+    height: calc(1.5em + 0.75rem - 4px);
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.navbar-user {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+.form-control {
+    height: calc(1.5em + 0.75rem - 4px);
+    display: inline-block;
+}
+nav-sbar {
+    padding: 0;
 }
