@@ -60,7 +60,6 @@ $(document).ready(
 
         function sendMessage() {
             if (newConvo) {
-                var conversationID;
                 $.ajax({
                     url: 'conversations/newConversation',
                     type: 'POST',

@@ -9,6 +9,8 @@ const { check, validationResult } = require('express-validator');
  **/
 router.post('/newConversation', function (req, res, next) {
     const conversation = new Conversation(req.body);
+    conversation.last_altered = new Date(Date.now());
+    conversation.messages[0].date_created = new Date(Date.now());
     console.log(conversation);
     conversation.save(function (err, conversation) {
         if (err)
@@ -41,7 +43,7 @@ router.put('/sendMessage', function (req, res, next) {
         "message": req.body.message,
         "date_created": new Date(Date.now())
     }
-    Conversation.findOneAndUpdate({_id: req.body.conversation_id}, {$push: {messages: message }}, function (err, conversation) {
+    Conversation.findOneAndUpdate({_id: req.body.conversation_id}, {$push: {messages: message }, $set: {last_altered: new Date(Date.now())}}, function (err, conversation) {
         if (err)
             throw err;
         res.json("success");
@@ -100,7 +102,7 @@ router.get('/getRecentMessages', function (req, res, next) {
     User.findOne({access_token: jwtString}, function (err, user) {
         if (err)
             throw err;
-        Conversation.find({users: user._id}).populate({path: 'users', select: 'user_name', model: 'User'}).exec( function (err, conversations) {
+        Conversation.find({users: user._id}).sort({last_altered: -1}).populate({path: 'users', select: 'user_name', model: 'User'}).exec( function (err, conversations) {
             if (err)
                 throw err;
 
