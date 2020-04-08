@@ -24,9 +24,12 @@ $(document).ready(
                 success: function (data) {
                     if (currentConversation == null) if (data.length > 0) currentConversation = data[0].conversation_id;
                     var recentMessages = "";
+                    var you = "";
                     for (var i = 0; i < data.length; i++) {
+                        if (data[i].sent_by == user) you += "You: ";
                         recentMessages += "<div id='"+data[i].conversation_id+"' class='chat_list'> <div class='chat_people'> <div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>" +
-                            "</div> <div class='chat_ib'> <h5>"+data[i].friend+"<span class='chat_date'>Dec 25</span></h5> <p>"+data[i].message+"</p> </div> </div> </div>";
+                            "</div> <div class='chat_ib'> <h5>"+data[i].friend+"<span class='chat_date'>Dec 25</span></h5> <p>"+you+data[i].message+"</p> </div> </div> </div>";
+                        you = "";
                     }
                     $(".inbox_chat").html(recentMessages);
                     if (!newConvo) getConversation(currentConversation);
