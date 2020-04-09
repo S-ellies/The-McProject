@@ -1,0 +1,31 @@
+body {
+    background: url("../images/websitebackground.jpg") no-repeat fixed center;
+    background-size: cover;
+    padding: 0px;
+}
+
+a {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    color: rgb(132, 0, 255);
+
+}
+
+h1{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+
+}
+
+button{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.jumbotron{
+    margin-top: 20px;
+    background: none;
+}

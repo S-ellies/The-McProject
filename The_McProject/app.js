@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var messageRouter = require('./routes/messages');
 var conversationRouter = require('./routes/conversations');
+var friendsRouter = require('./routes/friends');
 
 var app = express();
 
@@ -21,12 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(__dirname + '/public/images/The McLogo.png'));
+app.use(favicon(__dirname + '/public/images/theMcLogo.png'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/messages', messageRouter);
 app.use('/conversations', conversationRouter);
+app.use('/friends', friendsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
