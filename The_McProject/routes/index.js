@@ -44,6 +44,11 @@ router.get('/getUserImage', function (req, res, next) {
     })
 })
 
+/* GET search page */
+router.get('/findUsers', function (req,res,next) {
+    res.render('/findUsers', {title: "search bar"});
+});
+
 /*
 Verifies a JWT
 */
