@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/userModel')
+var User = require('../models/userModel');
 var jwt = require('jsonwebtoken');
 
 /**
@@ -35,6 +35,7 @@ router.post('/register', function (req, res, next) {
           throw err;
         res.cookie('Authorization', 'Bearer ' + user.access_token);
         res.cookie('Username', user.user_name);
+        res.cookie('UserID', user._id);
         res.json({ 'success': 'account created' });
       });
     }
@@ -99,6 +100,7 @@ router.post('/login', function (req, res, next) {
         user.save();
         res.cookie('Authorization', 'Bearer ' + user.access_token);
         res.cookie('Username', user.user_name);
+        res.cookie('UserID', user._id);
         res.json({ 'success': 'loggedIn' });
       }
       else {
@@ -162,6 +164,7 @@ function verifyJwt(jwtString) {
   var value = jwt.verify(jwtString, 'CSIsTheWorst');
   return value;
 }
+
 
 
 module.exports = router;

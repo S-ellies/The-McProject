@@ -5,6 +5,7 @@ $(document).ready(
         var threads = []; //array to store objects containing newest message for each conversation
 
         getMessages();
+        scrollBottom();
 
         function getMessages() {
             $.ajax({
@@ -30,7 +31,7 @@ $(document).ready(
                     }
 
                     //generate current conversation messages html for DOM
-                    for (var i = data.length-1; i >= 0; i--) {
+                    for (var i = 0; i < data.length; i++) {
                         if (data[i].sender == friend || data[i].recipient == friend) {
                             if (data[i].sender == user) {
                                 messages += "<div class='outgoing_msg'> <div class='sent_msg'> <p>"+data[i].message+"</p> " +
@@ -75,6 +76,7 @@ $(document).ready(
                 },
                 success: function(result) {
                     getMessages(user, friend);
+                    scrollBottom();
                 }
             });
         })
@@ -93,5 +95,12 @@ $(document).ready(
             $('#msg_history').animate({scrollTop: $('#msg_history').scrollHeight},"fast");
             getMessages();
         });
+
+        //scrolls the current element to the bottom (for message thread)
+        function scrollBottom() {
+            var element = document.getElementById("msg_history");
+            element.scrollTop = element.scrollHeight;
+        }
+
     }
 );

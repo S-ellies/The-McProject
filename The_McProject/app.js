@@ -8,6 +8,7 @@ var favicon = require('serve-favicon');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var messageRouter = require('./routes/messages');
+var conversationRouter = require('./routes/conversations');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(favicon(__dirname + '/public/images/The McLogo.png'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/messages', messageRouter);
+app.use('/conversations', conversationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
