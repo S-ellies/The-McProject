@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-      <link rel='stylesheet' href='/stylesheets/style.css'>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.min.js"></script>
-      <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      <script src="/javascripts/multSelect.js"></script>
-      <script src="/javascripts/auth.js"></script>
-      <script src="/javascripts/layout.js"></script>
-      <title>{{title}}</title>
-  </head>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel='stylesheet' href='/stylesheets/style.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body>
-        <div class="containerOne" style="background-color: #333333;">
-		<nav class="navbar navbar-expand-lg">
-			<a class="navbar-brand" href="/">The McProject</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" 	aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item active">
-							<a class = "nav-link" href = "/users/login">My Profile</a>
-						</li>
-						<li class="nav-item active">
-							<a class = "nav-link" href = "#">Find A Band</a>
-						</li>
-						<li class="nav-item active">
-							<a class = "nav-link" href = "/users/register">Sign Up</a>
-						</li>
-					</ul>
-					<form class="form-inline my-2 my-lg-1" style="background-color: #333333;">
-						<input class="form-control mr-sm-1" style="background-color: #333333;" type="search" placeholder="Find Friends">
-						<button class="btn btn-outline-light my-2 my-sm-0" style="background-color: #333333;" type="submit">Search</button>
-					</form>
-                    <div class="nav-item avatar">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.min.js"></script>
+  <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="/javascripts/multSelect.js"></script>
+  <script src="/javascripts/auth.js"></script>
+  <script src="/javascripts/layout.js"></script>
+  <script src="/javascripts/getUsers.js"></script>
 
-                    </div>
+  <title>{{title}}</title>
+</head>
 
-				</div>
-		</nav>
-	</div>
+<body>
+  <div class="containerOne" style="background-color: #333333;">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="/">The McProject</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/users/login">My Profile</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Find A Band</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/users/register">Sign Up</a>
+          </li>
+        </ul>
 
-    {{{body}}}
-  </body>
+        <div class="nav-item avatar">
+
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  {{{body}}}
+</body>
+
 </html>
