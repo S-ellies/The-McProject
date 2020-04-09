@@ -133,7 +133,7 @@ img{ max-width:100%;}
     top: 11px;
     width: 33px;
 }
-.messaging { padding: 0 0 0 0; height:calc(100% - 62px);}
+.messaging { padding: 0 0 0 0; height:calc(100% - 59px);}
 .msg_history {
     height: 90%;
     overflow-y: auto;
