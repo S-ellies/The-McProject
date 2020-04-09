@@ -5,42 +5,9 @@ html,body {
   min-height:100vh !important;
   max-height:100vh !important;
 }
- body { 
-    background: url("../images/websitebackground.jpg") no-repeat center center fixed;  
-    background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-  padding: 0px;
-
-}
-
-a {
-  text-align: center;
-  color: white;
-  font-size: 20px;
-  color: rgb(132, 0, 255);
-
- }
- 
 
 
-h1{
-  text-align: center;
-  color: white;
-  font-size: 20px;
-	
-}
 
-button{
-	text-align: center;
-	color: white;
-	font-size: 20px;
-}
-
-.jumbotron{
-	margin-top: 20px;
-	background: none;
-}
 
 .search-btn {
     height: calc(1.5em + 0.75rem - 4px);
@@ -49,18 +16,19 @@ button{
     padding: 0.375rem 0.75rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     cursor: pointer;
+    vertical-align: center;
 }
 
 .navbar-user {
     margin-right: 0;
-    margin-left: 1rem;
 }
 
 .form-control {
     height: calc(1.5em + 0.75rem - 4px);
     display: inline-block;
 }
-nav-sbar {
-    padding: 0;
+
+.nav-search {
+    margin-right: 1rem;
 }
 
