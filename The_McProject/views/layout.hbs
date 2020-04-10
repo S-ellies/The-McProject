@@ -26,12 +26,6 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarNav"><!--collapsible navbar links-->
             <ul class="navbar-nav">
-                <li class="nav-item"><!--link to login-->
-                    <a class="nav-link" href="/users/login">Login</a>
-                </li>
-                <li class="nav-item"><!--link to sign up-->
-                    <a class="nav-link" href="/users/register">Sign up</a>
-                </li>
                 <li class="nav-item"><!--link to messages-->
                     <a class="nav-link" href="/messages">Messages</a>
                 </li>
@@ -49,6 +43,14 @@
             </form>
         </div>
         <div class="navbar-user">
+            <ul class="navbar-nav login">
+                <li class="nav-item"><!--link to login-->
+                    <a class="nav-link nav-link-login" href="/users/login">Login</a>
+                </li>
+                <li class="nav-item"><!--link to sign up-->
+                    <a class="nav-link nav-link-login" href="/users/register">Sign up</a>
+                </li>
+            </ul>
 
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">

@@ -30,3 +30,21 @@ html,body {
 .avatar {
 	margin-left: 1rem;
 }
+
+.navbar-nav .dropdown-menu {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.login {
+    flex-direction: row!important;
+}
+
+.nav-link-login {
+    padding-right: .5rem; padding-left: .5rem!important;
+}
