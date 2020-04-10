@@ -1,20 +1,65 @@
 <!--add forms to let user upload profile image, set what instruments they play, enter their location as well as other personal data, write a bio etc. -->
-<div class="col-md-8 col-md-offset-2">
-    <h2>Add some information to your account</h2>
-    <form class="form-horizontal" role="form" id="reg-form">
-        <div class="form-group mt">
-            <div class="col-sm-10 col-sm-offset-2">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                    <label class="custom-file-label" for="customFileLang">Upload File</label>
-                </div>
+<form>
+    <!--Email Address-->
+        <div id = "email">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="emailaddr" placeholder="name@example.com">
+            </div>
+        </div>    
+    <!--Username-->
+    <div id = "uName">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="username">@</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <!--Instruments-->
+        <div id = "instruments">
+             <div class="form-group">
+                <label for="exampleFormControlSelect2">Instruments</label>
+                <select multiple class="form-control" id="instrument-group">
+                    <option>Guitar</option>
+                    <option>Bass</option>
+                    <option>Flute</option>
+                    <option>Tinwhistle</option>
+                    <option>Drums</option>
+                    <option>Cello</option>
+                    <option>Piano</option>
+                    <option>Percussion</option>
+                    <option>Bongos</option>
+                </select>
             </div>
         </div>
-
+    <!--Location-->
+    <div id = "location">
         <div class="form-group">
-            <div class="row col-sm-offset-2 col-sm-10 mt">
-                <button type="submit" class="btn btn-warning btn-lg">Create Account</button>
-            </div>
+            <label for="exampleFormControlTextarea1">Location</label>
+            <textarea class="form-control" id="location" rows="4"></textarea>
         </div>
-    </form>
-</div>
+    </div>
+    <!--bio-->
+    <div id = "bio">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">bio</label>
+            <textarea class="form-control" id="biography" rows="3"></textarea>
+        </div>
+    </div>
+    <!--password-->
+    <div id="pward">
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+    </div>
+    <!--Profile picture-->
+    <div id ="ppic">
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Upload a profile pic here</label>
+            <input type="file" class="form-control-file" id="profile pic">
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>

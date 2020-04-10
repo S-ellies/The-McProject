@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/userModel')
+var User = require('../models/userModel');
 var jwt = require('jsonwebtoken');
 
 /**
@@ -34,6 +34,8 @@ router.post('/register', function (req, res, next) {
         if (err)
           throw err;
         res.cookie('Authorization', 'Bearer ' + user.access_token);
+        res.cookie('Username', user.user_name);
+        res.cookie('UserID', user._id);
         res.json({ 'success': 'account created' });
       });
     }
@@ -56,6 +58,18 @@ router.get('/profileSetup', function(req, res, next) {
  */
 router.get('/login', function(req, res, next) {
   res.render('login');
+});
+/**
+ * Retrieve search page
+ */
+router.get('/search', function(req, res, next) {
+  res.render('findUsers');
+});
+/**
+ * Retrieve profile page
+ */
+router.get('/profile', function(req, res, next) {
+  res.render('profile');
 });
 
 
@@ -91,6 +105,8 @@ router.post('/login', function (req, res, next) {
         user.access_token = createJwt({ email: email });
         user.save();
         res.cookie('Authorization', 'Bearer ' + user.access_token);
+        res.cookie('Username', user.user_name);
+        res.cookie('UserID', user._id);
         res.json({ 'success': 'loggedIn' });
       }
       else {
@@ -154,6 +170,7 @@ function verifyJwt(jwtString) {
   var value = jwt.verify(jwtString, 'CSIsTheWorst');
   return value;
 }
+
 
 
 module.exports = router;

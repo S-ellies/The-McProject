@@ -7,11 +7,13 @@ var usersSchema = new Schema({
     user_name: { type: String, require: true },
     instrument: { type: [String], require: true },
     email: { type: String, require: true },
-    location: { type: String, require: true },
-    dob: { type: String, require: true },
-    image: { type: String },
-    bio: { type: String },
     password: { type: String, require: true },
+    location: { type: String, require: true },
+    dob: { type: Date, require: true },
+    image: { type: String, default:"/images/ronald_mcdonald.png"},
+    bio: { type: String, default:"" },
+    conversations: [{ type: Schema.Types.ObjectId, ref: 'Conversation'}],
+    friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
     access_token: String
 });
 
