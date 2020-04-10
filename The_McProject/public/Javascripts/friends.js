@@ -15,7 +15,7 @@ $(document).ready(
                  success: function(data) {
                      var friends = "";
                      for (var i = 0; i < data.length; i++) {
-                         friends += "<div class='container'><div class='card' style='width:400px'> <img class='card-img-top' src="+data[i].image+" alt='profile picture' style='width:100%'> <div class='card-body'> <h4 class='card-title'>"+data[i].user_name+"</h4> <p class='card-text'>"+data[i].bio+"</p> </div></div></div>";
+                         friends += "<div class='container col-sm-6'><div class='card' style='width:400px'> <img class='card-img-top' src="+data[i].image+" alt='profile picture' style='width:100%'> <div class='card-body'> <h4 class='card-title'>"+data[i].user_name+"</h4> <p class='card-text'>"+data[i].bio+"</p> </div></div></div>";
                      }
                      $('.friends').html(friends);
                  }
@@ -29,7 +29,7 @@ $(document).ready(
                 success: function (data) {
                     var users = "";
                     for (var i = 0; i < data.length; i++) {
-                        users += "<div class='container'> <div class='card' style='width:400px'> <img class='card-img-top' src="+data[i].image+" alt='profile picture' style='width:100%'> <div class='card-body'> <h4 class='card-title'>"+data[i].user_name+"</h4> <p class='card-text'>"+data[i].bio+"</p> <button id='"+data[i]._id+"' class='btn btn-primary'>Add Friend</button> </div></div></div>";
+                        users += "<div class='container col-sm-6'> <div class='card' style='width:400px'> <img class='card-img-top' src="+data[i].image+" alt='profile picture' style='width:100%'> <div class='card-body'> <h4 class='card-title'>"+data[i].user_name+"</h4> <p class='card-text'>"+data[i].bio+"</p> <button id='"+data[i]._id+"' class='btn btn-primary'>Add Friend</button> </div></div></div>";
                     }
                     $('.users').html(users);
                 }
