@@ -59,6 +59,18 @@ router.get('/profileSetup', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login');
 });
+/**
+ * Retrieve search page
+ */
+router.get('/search', function(req, res, next) {
+  res.render('findUsers');
+});
+/**
+ * Retrieve profile page
+ */
+router.get('/profile', function(req, res, next) {
+  res.render('profile');
+});
 
 
 /**

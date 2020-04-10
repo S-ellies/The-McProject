@@ -1,0 +1,12 @@
+
+
+.card {
+    height: 380px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 20px;
+}
+
+.friendPage {
+    text-align: center;
+}

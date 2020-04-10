@@ -33,16 +33,26 @@ router.get('/messages', function(req, res, next) {
     }
 });
 
-/**
- * GET user profile picture
- */
-router.get('/getUserImage', function (req, res, next) {
-    User.findOne({access_token: req.cookies.Authorization.split(" ")[1]}, function (err, user) {
-        if (err)
-            throw err;
-        res.json(user.image);
-    })
-})
+/*GET friends page. */
+router.get('/friends', function(req, res, next) {
+
+    try {
+        var jwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+        if (profile) {
+            res.render('friends', {title: 'Friends'});
+        }
+    }catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "You are not logged in."
+            ]
+        });
+    }
+});
+
+
 
 /*GET profile */
 router.get('/profile',function (req,res,next) {
