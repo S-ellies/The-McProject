@@ -1,13 +1,8 @@
-
-
 html,body {
   height:100vh !important;
   min-height:100vh !important;
   max-height:100vh !important;
 }
-
-
-
 
 .search-btn {
     height: calc(1.5em + 0.75rem - 4px);
@@ -32,3 +27,6 @@ html,body {
     margin-right: 1rem;
 }
 
+.avatar {
+	margin-left: 1rem;
+}

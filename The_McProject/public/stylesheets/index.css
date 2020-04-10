@@ -29,3 +29,57 @@ button{
     margin-top: 20px;
     background: none;
 }
+
+#containerOne{
+    color: white;
+    min-height: 100%;
+    background-color: #333333;
+}
+
+#containerTwo{
+    overflow: auto;
+    padding-bottom: 20px;
+    background-color: red;
+    height:20px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.carousel-contain{
+    width: 60%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slide{
+    display: flex;
+    width: 100%;
+    height: 500px;
+}
+
+#prevButton{
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    left: 5%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#nextButton{
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    right: 5%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.5;
+}
