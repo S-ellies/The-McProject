@@ -1,5 +1,5 @@
 <!--add forms to let user upload profile image, set what instruments they play, enter their location as well as other personal data, write a bio etc. -->
-<form>
+<form id = "personInfo" onsubmit="updateProfile.js">
     <!--Email Address-->
         <div id = "email">
             <div class="form-group">
@@ -11,10 +11,10 @@
     <div id = "uName">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="username">@</span>
+                <span class="input-group-text">@</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id = "uname">
+            </div>
     </div>
     <!--Instruments-->
         <div id = "instruments">
@@ -58,7 +58,7 @@
     <div id ="ppic">
         <div class="form-group">
             <label for="exampleFormControlFile1">Upload a profile pic here</label>
-            <input type="file" class="form-control-file" id="profile pic">
+            <input type="file" class="form-control-file" id="profile-pic">
         </div>
     </div>
     <input class="btn btn-primary" type="submit" value="Submit">

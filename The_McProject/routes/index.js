@@ -54,6 +54,11 @@ router.get('/friends', function(req, res, next) {
 
 
 
+/*GET profile */
+router.get('/profile',function (req,res,next) {
+    res.render('profile', {title : "sample profile"});
+});
+
 /*
 Verifies a JWT
 */
