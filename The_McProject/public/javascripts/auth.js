@@ -1,5 +1,6 @@
 $(document).ready(
     function () {
+        redirect();
         /**
          * Event handler for when the user attempts to register
          */
@@ -38,7 +39,7 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function (token) {
-                    $(location).attr('href', '/');
+                    $(location).attr('href', '/users/profile');
                     // Redirect to logged in page
                 },
                 error: function (errMsg) {
@@ -50,5 +51,11 @@ $(document).ready(
                 }
             });
         });
-
+        function redirect(){
+            console.log("here");
+            var verify = $.cookie("Username");
+            console.log($.cookie("Username"));
+            if (verify.length < 1)
+                $(location).attr('href', '/users/login');
+        }
     });

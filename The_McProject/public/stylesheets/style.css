@@ -3,6 +3,98 @@ html,body {
   min-height:100vh !important;
   max-height:100vh !important;
 }
+ body { 
+    background: url("../images/websitebackground.jpg") no-repeat center center fixed;  
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  padding: 0px;
+}
+
+a {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+ }
+ 
+h1{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+	
+}
+
+p{
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+button{
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: normal!important;
+}
+
+.jumbotron{
+	margin-top: 20px;
+	background: none;
+}
+
+#containerOne{
+	color: white;
+	min-height: 100%;
+	background-color: #333333;
+}
+
+#containerTwo{
+	overflow: auto; 
+	padding-bottom: 20px;
+	background-color: red;
+	height:20px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.carousel-contain{
+	width: 60%;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.carousel-slide{
+	display: flex;
+	width: 100%;
+	height: 500px;
+}
+
+#prevButton{
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	left: 5%;
+	font-size: 30px;
+	color: white;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+#nextButton{
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	right: 5%;
+	font-size: 30px;
+	color: white;
+	cursor: pointer;
+	opacity: 0.5;
+}
 
 .search-btn {
     height: calc(1.5em + 0.75rem - 4px);

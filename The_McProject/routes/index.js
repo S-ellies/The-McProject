@@ -52,16 +52,7 @@ router.get('/friends', function(req, res, next) {
     }
 });
 
-/**
- * GET user profile picture
- */
-router.get('/getUserImage', function (req, res, next) {
-    User.findOne({access_token: req.cookies.Authorization.split(" ")[1]}, function (err, user) {
-        if (err)
-            throw err;
-        res.json(user.image);
-    })
-})
+
 
 /*
 Verifies a JWT
