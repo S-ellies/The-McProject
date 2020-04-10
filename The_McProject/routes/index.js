@@ -33,6 +33,25 @@ router.get('/messages', function(req, res, next) {
     }
 });
 
+/*GET friends page. */
+router.get('/friends', function(req, res, next) {
+
+    try {
+        var jwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+        if (profile) {
+            res.render('friends', {title: 'Friends'});
+        }
+    }catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "You are not logged in."
+            ]
+        });
+    }
+});
+
 /**
  * GET user profile picture
  */
