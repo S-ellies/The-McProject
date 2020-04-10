@@ -22,5 +22,5 @@ $("personInfo").submit(
     });
 
     models.update(
-        user_name = this.name,formData
+        {user_name : this.name},formData
     );
