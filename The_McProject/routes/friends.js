@@ -17,7 +17,7 @@ router.get('/getUserFriends', function (req, res, next) {
 router.put('/addFriend', function (req, res, next) {
     User.findOneAndUpdate({access_token: req.cookies.Authorization.split(" ")[1]}, {$addToSet: {friends: req.body.id}}, function (err, user) {
         User.findOneAndUpdate({_id: req.body.id}, {$addToSet: {friends: user._id}}, function (err, friend) {
-            console.log(req.body.id);
+            console.log();
             res.json("success");
         })
     })
