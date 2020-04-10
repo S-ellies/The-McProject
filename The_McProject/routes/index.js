@@ -44,6 +44,11 @@ router.get('/getUserImage', function (req, res, next) {
     })
 })
 
+/*GET profile */
+router.get('/profile',function (req,res,next) {
+    router.get('profile', {title : "sample profile"});
+});
+
 /*
 Verifies a JWT
 */
