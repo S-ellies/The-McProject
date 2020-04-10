@@ -1,35 +1,28 @@
-<!--
-    page to display user profile
-    make sure to include:
-        prof. pic
-        bio
-        location
-        instruments
-        name
-
--->
-<!--Profile Pic-->
-<img src="/images/ronald_mcdonald.png" class="rounded float-left" alt="...">
-<!-- name -->
-<h2 class="font-italic text-light bg-dark">Name</h2>
-<!-- bio -->
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h4 class="display-4">User bio</h4>
-    <p class="lead text-light bg-dark">this is where the bio would be</p>
+<div id='profilePage'>
+  <!--Profile Pic-->
+  <div id='profileImg'></div>
+  <!-- name -->
+  <h2 id='usrName' class="font-italic text-light bg-dark">Name</h2>
+  <!-- bio -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4 class="display-4">User bio</h4>
+      <p id="usrBio" class="lead text-light bg-dark"></p>
+    </div>
   </div>
-</div>
-<!-- location-->
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <p class="lead text-light bg-dark">this is where the location would go</p>
-    <p class="lead text-light bg-dark">i.e. galway,ireland</p>
+  <!-- location-->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <p id='location' class="lead text-light bg-dark"></p>
+    </div>
   </div>
-</div>
-<!-- instrumetnts -->
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h4 class="display-4">Instruments</h4>
-    <p class="lead text-light bg-dark">instruments would be included here, i.e. guitar,piano etc</p>
+  <!-- instrumetnts -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4 class="display-4">Instruments</h4>
+      <p id='usrIstruments' class="lead text-light bg-dark">instruments would be included here, i.e. guitar,piano etc
+      </p>
+    </div>
+    <button id='addFriend' class='btn btn-dark btn-lg' >Add Friend</button>
   </div>
 </div>

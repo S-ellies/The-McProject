@@ -52,9 +52,7 @@ $(document).ready(
             });
         });
         function redirect(){
-            console.log("here");
             var verify = $.cookie("Username");
-            console.log($.cookie("Username"));
             if (verify.length < 1)
                 $(location).attr('href', '/users/login');
         }

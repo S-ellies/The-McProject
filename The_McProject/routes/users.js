@@ -85,6 +85,8 @@ router.put('/updateUser', function (req, res, next) {
       users.instrument.push(req.instrument);
     if(req.user_name != null)
       users.user_name = req.user_name;
+    if(req.friends != null)
+      users.friends.push(req.friends);
   })
 });
 /**
